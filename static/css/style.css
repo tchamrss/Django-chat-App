@@ -1,0 +1,12 @@
+.page-content {
+    padding: 100px 100px;
+}
+
+.color-gray {
+    color: gray;
+}
+
+.links {
+    display: flex;
+    justify-content: end;
+}
