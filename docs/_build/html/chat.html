@@ -43,11 +43,18 @@
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#chat-admin-module">chat.admin module</a></li>
-<li><a class="reference internal" href="#chat-apps-module">chat.apps module</a></li>
+<li><a class="reference internal" href="#module-chat.apps">chat.apps module</a><ul>
+<li><a class="reference internal" href="#chat.apps.ChatConfig"><code class="docutils literal notranslate"><span class="pre">ChatConfig</span></code></a><ul>
+<li><a class="reference internal" href="#chat.apps.ChatConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">ChatConfig.default_auto_field</span></code></a></li>
+<li><a class="reference internal" href="#chat.apps.ChatConfig.name"><code class="docutils literal notranslate"><span class="pre">ChatConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#chat-models-module">chat.models module</a></li>
-<li><a class="reference internal" href="#chat-tests-module">chat.tests module</a></li>
+<li><a class="reference internal" href="#module-chat.tests">chat.tests module</a></li>
 <li><a class="reference internal" href="#chat-views-module">chat.views module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-chat">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -85,9 +92,23 @@
 <li class="toctree-l1"><a class="reference internal" href="chat.migrations.html">chat.migrations package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#chat-migrations-0001-initial-module">chat.migrations.0001_initial module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#chat-migrations-0002-chat-module">chat.migrations.0002_chat module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#chat-migrations-0003-message-chat-module">chat.migrations.0003_message_chat module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#module-chat.migrations.0002_chat">chat.migrations.0002_chat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chat.migrations.html#chat.migrations.0002_chat.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="chat.migrations.html#chat.migrations.0002_chat.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="chat.migrations.html#chat.migrations.0002_chat.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#module-chat.migrations.0003_message_chat">chat.migrations.0003_message_chat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chat.migrations.html#chat.migrations.0003_message_chat.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="chat.migrations.html#chat.migrations.0003_message_chat.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="chat.migrations.html#chat.migrations.0003_message_chat.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chat.migrations.html#module-chat.migrations">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -99,20 +120,36 @@
 <section id="chat-admin-module">
 <h2>chat.admin module<a class="headerlink" href="#chat-admin-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="chat-apps-module">
-<h2>chat.apps module<a class="headerlink" href="#chat-apps-module" title="Permalink to this heading"></a></h2>
+<section id="module-chat.apps">
+<span id="chat-apps-module"></span><h2>chat.apps module<a class="headerlink" href="#module-chat.apps" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="chat.apps.ChatConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">chat.apps.</span></span><span class="sig-name descname"><span class="pre">ChatConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#chat.apps.ChatConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="chat.apps.ChatConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#chat.apps.ChatConfig.default_auto_field" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="chat.apps.ChatConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'chat'</span></em><a class="headerlink" href="#chat.apps.ChatConfig.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="chat-models-module">
 <h2>chat.models module<a class="headerlink" href="#chat-models-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="chat-tests-module">
-<h2>chat.tests module<a class="headerlink" href="#chat-tests-module" title="Permalink to this heading"></a></h2>
+<section id="module-chat.tests">
+<span id="chat-tests-module"></span><h2>chat.tests module<a class="headerlink" href="#module-chat.tests" title="Permalink to this heading"></a></h2>
 </section>
 <section id="chat-views-module">
 <h2>chat.views module<a class="headerlink" href="#chat-views-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="module-chat">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chat" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 

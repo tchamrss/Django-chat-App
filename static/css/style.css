@@ -10,3 +10,15 @@
     display: flex;
     justify-content: end;
 }
+
+.su-content {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: white;
+}
