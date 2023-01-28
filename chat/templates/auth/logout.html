@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <div class="alert alert-success" role="alert">
+        <h1>Logged out!</h1>
+        <hr>
+    </div>
+    <div>
+        <h3>Login again?</h3>
+        <a href="/login/">Login</a> <br>
+    </div>
+   
+    
+{% endblock content %}

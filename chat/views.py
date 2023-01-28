@@ -2,18 +2,15 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponseRedirect
 from .models import Chat, Message
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.core import serializers
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .forms import UserRegistrationForm
 from django.contrib import messages
-""" from .forms import NewUserForm """
 from django.contrib.auth import login
-from django.urls import reverse_lazy
-from django.views import generic
+
 
 @login_required(login_url='/login/')
 def index(request):
@@ -36,49 +33,41 @@ def index(request):
 
 
 def login_view(request):
-    redirect = request.GET.get('next')
+    """ redirect = request.GET.get('next') """
     if request.method == 'POST':
         user = authenticate(username = request.POST.get('username'), password=request.POST.get('password'))
         if user:
             login(request, user)
-            return HttpResponseRedirect(request.POST.get('redirect'))
+            """ return HttpResponseRedirect(request.POST.get('redirect')) """
+            return render(request,'chat/index.html')
         else:
-            return render(request,'auth/login.html', { 'wrongPassword': True, 'redirect': redirect})
-    return render(request,'auth/login.html', { 'redirect': redirect })
+            """ return render(request,'auth/login.html', { 'wrongPassword': True, 'redirect': redirect}) """
+            return render(request,'auth/login.html', { 'wrongPassword': True})
+    """ return render(request,'auth/login.html', { 'redirect': redirect }) """
+    return render(request,'auth/login.html')
+
+def home(request):
+    return render(request, 'chat/index.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, f'Your account has been created. You can log in now!')    
+            """ return redirect('login') """
+            return render(request, 'chat/index.html')
+    else:
+        form = UserRegistrationForm()
+
+    context = {'form': form}
+    return render(request, 'auth/signup.html', context)
 
 
+def logout_view(request):
+    logout(request)
+    return render(request, 'auth/logout.html')   
     
-    
-class NewUserForm(UserCreationForm):
-	email = forms.EmailField(required=True)
-
-	class Meta:
-		model = User
-		fields = ("username", "email", "password1", "password2")
-
-	def save(self, commit=True):
-		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
-		if commit:
-			user.save()
-		return user
 
 
-class signup_view(generic.CreateView):
-    form_class = NewUserForm
-    success_url = reverse_lazy("/login/?next=/chat/" )
-    template_name = "auth/signup.html"
-    
-    
-
-def register_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect("chat:index")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="auth/signup.html", context={"register_form":form})

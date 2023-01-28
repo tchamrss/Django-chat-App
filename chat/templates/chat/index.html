@@ -29,10 +29,12 @@
                 });
                 let responseAsJson = await response.json();
                 console.log('json is',responseAsJson);
+                responseAsJsonParse = JSON.parse(responseAsJson);
+                console.log('parse json is',responseAsJsonParse);
                 document.getElementById('deleteMessage').remove();
                 messageContainer.innerHTML +=`
-                <div id="deleteMessage">
-                    <span class="color-gray">[DATUM]</span>{{request.user.first_name}}: <i>${ messageField.value}</i>
+                <div>
+                    <span class="color-gray">[${responseAsJsonParse['fields'].created_at}]</span>{{request.user.first_name}}: <i>${ messageField.value}</i>
                 </div>
                 `;
                 console.log('success!!');
