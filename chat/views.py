@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 
 
-@login_required(login_url='/login/')
+""" @login_required(login_url='/login/') """
 def index(request):
     """this is a view to render the chat
 
@@ -38,8 +38,9 @@ def login_view(request):
         user = authenticate(username = request.POST.get('username'), password=request.POST.get('password'))
         if user:
             login(request, user)
+            return HttpResponseRedirect('/chat/')
             """ return HttpResponseRedirect(request.POST.get('redirect')) """
-            return render(request,'chat/index.html')
+            """ return render(request,'chat/') """
         else:
             """ return render(request,'auth/login.html', { 'wrongPassword': True, 'redirect': redirect}) """
             return render(request,'auth/login.html', { 'wrongPassword': True})
