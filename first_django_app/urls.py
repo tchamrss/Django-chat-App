@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from chat.views import index, login_view,register, logout_view
-
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', index),
@@ -24,4 +25,4 @@ urlpatterns = [
     path('logout/', logout_view),
     path('', index),
     path('signup/', register),
-]
+]+ staticfiles_urlpatterns()
